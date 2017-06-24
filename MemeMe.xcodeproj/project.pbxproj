@@ -16,6 +16,8 @@
 		E90CDFC71EEE93D9008E5763 /* TakeAPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFC61EEE93D9008E5763 /* TakeAPictureViewController.swift */; };
 		E90CDFC91EEF264D008E5763 /* MemesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFC81EEF264D008E5763 /* MemesTableViewCell.swift */; };
 		E90CDFCB1EEF26A0008E5763 /* MemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFCA1EEF26A0008E5763 /* MemesCollectionViewCell.swift */; };
+		E90CDFCD1EEF3B43008E5763 /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */; };
+		E90CDFCF1EEF3B62008E5763 /* MemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		E90CDFC61EEE93D9008E5763 /* TakeAPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeAPictureViewController.swift; sourceTree = "<group>"; };
 		E90CDFC81EEF264D008E5763 /* MemesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesTableViewCell.swift; sourceTree = "<group>"; };
 		E90CDFCA1EEF26A0008E5763 /* MemesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewCell.swift; sourceTree = "<group>"; };
+		E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewController.swift; sourceTree = "<group>"; };
+		E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				E90CDFC61EEE93D9008E5763 /* TakeAPictureViewController.swift */,
 				E90CDFC81EEF264D008E5763 /* MemesTableViewCell.swift */,
 				E90CDFCA1EEF26A0008E5763 /* MemesCollectionViewCell.swift */,
+				E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */,
+				E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -269,9 +275,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E90CDFC71EEE93D9008E5763 /* TakeAPictureViewController.swift in Sources */,
+				E90CDFCF1EEF3B62008E5763 /* MemesTableViewController.swift in Sources */,
 				E90CDFC91EEF264D008E5763 /* MemesTableViewCell.swift in Sources */,
 				E90CDFCB1EEF26A0008E5763 /* MemesCollectionViewCell.swift in Sources */,
 				E90CDF991EECAA72008E5763 /* AppDelegate.swift in Sources */,
+				E90CDFCD1EEF3B43008E5763 /* MemesCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
