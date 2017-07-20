@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK:- For version 2.0
 class MemesCollectionViewCell: UICollectionViewCell {
     
 }

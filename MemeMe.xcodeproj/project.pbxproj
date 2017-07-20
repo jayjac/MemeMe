@@ -13,12 +13,14 @@
 		E90CDFA31EECAA72008E5763 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90CDFA11EECAA72008E5763 /* LaunchScreen.storyboard */; };
 		E90CDFAE1EECAA72008E5763 /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFAD1EECAA72008E5763 /* MemeMeTests.swift */; };
 		E90CDFB91EECAA72008E5763 /* MemeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFB81EECAA72008E5763 /* MemeMeUITests.swift */; };
-		E90CDFC71EEE93D9008E5763 /* TakeAPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFC61EEE93D9008E5763 /* TakeAPictureViewController.swift */; };
+		E90CDFC71EEE93D9008E5763 /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFC61EEE93D9008E5763 /* MemeEditorViewController.swift */; };
 		E90CDFC91EEF264D008E5763 /* MemesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFC81EEF264D008E5763 /* MemesTableViewCell.swift */; };
 		E90CDFCB1EEF26A0008E5763 /* MemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFCA1EEF26A0008E5763 /* MemesCollectionViewCell.swift */; };
 		E90CDFCD1EEF3B43008E5763 /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */; };
 		E90CDFCF1EEF3B62008E5763 /* MemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */; };
 		E99940161EFFAC2E00AAC01E /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E99940151EFFAC2E00AAC01E /* impact.ttf */; };
+		E99D25221F1AD0540004F128 /* FontChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D25211F1AD0540004F128 /* FontChooserViewController.swift */; };
+		E99D25241F1AD9080004F128 /* MemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D25231F1AD9080004F128 /* MemeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,12 +53,14 @@
 		E90CDFB41EECAA72008E5763 /* MemeMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90CDFB81EECAA72008E5763 /* MemeMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeUITests.swift; sourceTree = "<group>"; };
 		E90CDFBA1EECAA72008E5763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E90CDFC61EEE93D9008E5763 /* TakeAPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeAPictureViewController.swift; sourceTree = "<group>"; };
+		E90CDFC61EEE93D9008E5763 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 		E90CDFC81EEF264D008E5763 /* MemesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesTableViewCell.swift; sourceTree = "<group>"; };
 		E90CDFCA1EEF26A0008E5763 /* MemesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewCell.swift; sourceTree = "<group>"; };
 		E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewController.swift; sourceTree = "<group>"; };
 		E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesTableViewController.swift; sourceTree = "<group>"; };
 		E99940151EFFAC2E00AAC01E /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = impact.ttf; path = Fonts/impact.ttf; sourceTree = "<group>"; };
+		E99D25211F1AD0540004F128 /* FontChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontChooserViewController.swift; sourceTree = "<group>"; };
+		E99D25231F1AD9080004F128 /* MemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,11 +117,13 @@
 				E90CDF9F1EECAA72008E5763 /* Assets.xcassets */,
 				E90CDFA11EECAA72008E5763 /* LaunchScreen.storyboard */,
 				E90CDFA41EECAA72008E5763 /* Info.plist */,
-				E90CDFC61EEE93D9008E5763 /* TakeAPictureViewController.swift */,
+				E90CDFC61EEE93D9008E5763 /* MemeEditorViewController.swift */,
 				E90CDFC81EEF264D008E5763 /* MemesTableViewCell.swift */,
 				E90CDFCA1EEF26A0008E5763 /* MemesCollectionViewCell.swift */,
 				E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */,
 				E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */,
+				E99D25211F1AD0540004F128 /* FontChooserViewController.swift */,
+				E99D25231F1AD9080004F128 /* MemeModel.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -286,12 +292,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E90CDFC71EEE93D9008E5763 /* TakeAPictureViewController.swift in Sources */,
+				E90CDFC71EEE93D9008E5763 /* MemeEditorViewController.swift in Sources */,
 				E90CDFCF1EEF3B62008E5763 /* MemesTableViewController.swift in Sources */,
 				E90CDFC91EEF264D008E5763 /* MemesTableViewCell.swift in Sources */,
+				E99D25221F1AD0540004F128 /* FontChooserViewController.swift in Sources */,
 				E90CDFCB1EEF26A0008E5763 /* MemesCollectionViewCell.swift in Sources */,
 				E90CDF991EECAA72008E5763 /* AppDelegate.swift in Sources */,
 				E90CDFCD1EEF3B43008E5763 /* MemesCollectionViewController.swift in Sources */,
+				E99D25241F1AD9080004F128 /* MemeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+// MARK:- For version 2.0
 class MemesCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
