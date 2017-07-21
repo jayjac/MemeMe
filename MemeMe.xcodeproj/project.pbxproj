@@ -19,8 +19,13 @@
 		E90CDFCD1EEF3B43008E5763 /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */; };
 		E90CDFCF1EEF3B62008E5763 /* MemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */; };
 		E99940161EFFAC2E00AAC01E /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E99940151EFFAC2E00AAC01E /* impact.ttf */; };
-		E99D25221F1AD0540004F128 /* FontChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D25211F1AD0540004F128 /* FontChooserViewController.swift */; };
 		E99D25241F1AD9080004F128 /* MemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D25231F1AD9080004F128 /* MemeModel.swift */; };
+		E99D252C1F20B6650004F128 /* FontChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D252B1F20B6650004F128 /* FontChooserViewController.swift */; };
+		E99D252E1F221AF90004F128 /* FontHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99D252D1F221AF90004F128 /* FontHeaderView.xib */; };
+		E99D25301F221B4C0004F128 /* FontHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D252F1F221B4C0004F128 /* FontHeaderView.swift */; };
+		E99D25321F222ED60004F128 /* TapWaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D25311F222ED60004F128 /* TapWaveAnimation.swift */; };
+		E99D25341F2261580004F128 /* MemeEditor+ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D25331F2261580004F128 /* MemeEditor+ImagePickerDelegate.swift */; };
+		E99D25361F2261A50004F128 /* MemeEditor+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D25351F2261A50004F128 /* MemeEditor+TextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +64,13 @@
 		E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewController.swift; sourceTree = "<group>"; };
 		E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesTableViewController.swift; sourceTree = "<group>"; };
 		E99940151EFFAC2E00AAC01E /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = impact.ttf; path = Fonts/impact.ttf; sourceTree = "<group>"; };
-		E99D25211F1AD0540004F128 /* FontChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontChooserViewController.swift; sourceTree = "<group>"; };
 		E99D25231F1AD9080004F128 /* MemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeModel.swift; sourceTree = "<group>"; };
+		E99D252B1F20B6650004F128 /* FontChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontChooserViewController.swift; sourceTree = "<group>"; };
+		E99D252D1F221AF90004F128 /* FontHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FontHeaderView.xib; sourceTree = "<group>"; };
+		E99D252F1F221B4C0004F128 /* FontHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontHeaderView.swift; sourceTree = "<group>"; };
+		E99D25311F222ED60004F128 /* TapWaveAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapWaveAnimation.swift; sourceTree = "<group>"; };
+		E99D25331F2261580004F128 /* MemeEditor+ImagePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemeEditor+ImagePickerDelegate.swift"; sourceTree = "<group>"; };
+		E99D25351F2261A50004F128 /* MemeEditor+TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemeEditor+TextFieldDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,12 +128,17 @@
 				E90CDFA11EECAA72008E5763 /* LaunchScreen.storyboard */,
 				E90CDFA41EECAA72008E5763 /* Info.plist */,
 				E90CDFC61EEE93D9008E5763 /* MemeEditorViewController.swift */,
+				E99D25331F2261580004F128 /* MemeEditor+ImagePickerDelegate.swift */,
+				E99D25351F2261A50004F128 /* MemeEditor+TextFieldDelegate.swift */,
+				E99D25311F222ED60004F128 /* TapWaveAnimation.swift */,
 				E90CDFC81EEF264D008E5763 /* MemesTableViewCell.swift */,
 				E90CDFCA1EEF26A0008E5763 /* MemesCollectionViewCell.swift */,
 				E90CDFCC1EEF3B43008E5763 /* MemesCollectionViewController.swift */,
 				E90CDFCE1EEF3B62008E5763 /* MemesTableViewController.swift */,
-				E99D25211F1AD0540004F128 /* FontChooserViewController.swift */,
 				E99D25231F1AD9080004F128 /* MemeModel.swift */,
+				E99D252B1F20B6650004F128 /* FontChooserViewController.swift */,
+				E99D252D1F221AF90004F128 /* FontHeaderView.xib */,
+				E99D252F1F221B4C0004F128 /* FontHeaderView.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -135,7 +150,7 @@
 				E90CDFAF1EECAA72008E5763 /* Info.plist */,
 			);
 			path = MemeMeTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		E90CDFB71EECAA72008E5763 /* MemeMeUITests */ = {
 			isa = PBXGroup;
@@ -265,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E99940161EFFAC2E00AAC01E /* impact.ttf in Resources */,
+				E99D252E1F221AF90004F128 /* FontHeaderView.xib in Resources */,
 				E90CDFA31EECAA72008E5763 /* LaunchScreen.storyboard in Resources */,
 				E90CDFA01EECAA72008E5763 /* Assets.xcassets in Resources */,
 				E90CDF9E1EECAA72008E5763 /* Main.storyboard in Resources */,
@@ -295,11 +311,15 @@
 				E90CDFC71EEE93D9008E5763 /* MemeEditorViewController.swift in Sources */,
 				E90CDFCF1EEF3B62008E5763 /* MemesTableViewController.swift in Sources */,
 				E90CDFC91EEF264D008E5763 /* MemesTableViewCell.swift in Sources */,
-				E99D25221F1AD0540004F128 /* FontChooserViewController.swift in Sources */,
+				E99D25361F2261A50004F128 /* MemeEditor+TextFieldDelegate.swift in Sources */,
+				E99D252C1F20B6650004F128 /* FontChooserViewController.swift in Sources */,
+				E99D25341F2261580004F128 /* MemeEditor+ImagePickerDelegate.swift in Sources */,
 				E90CDFCB1EEF26A0008E5763 /* MemesCollectionViewCell.swift in Sources */,
 				E90CDF991EECAA72008E5763 /* AppDelegate.swift in Sources */,
 				E90CDFCD1EEF3B43008E5763 /* MemesCollectionViewController.swift in Sources */,
 				E99D25241F1AD9080004F128 /* MemeModel.swift in Sources */,
+				E99D25301F221B4C0004F128 /* FontHeaderView.swift in Sources */,
+				E99D25321F222ED60004F128 /* TapWaveAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

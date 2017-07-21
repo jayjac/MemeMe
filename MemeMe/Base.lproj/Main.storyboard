@@ -23,6 +23,9 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMK-0J-oBJ">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cpg-1M-yCL"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem width="120" style="plain" systemItem="fixedSpace" id="4Lp-J3-nZG"/>
                                     <barButtonItem systemItem="camera" id="JxC-DJ-0oq">
@@ -36,7 +39,12 @@
                                             <action selector="choosePictureFromPhotoLibrary:" destination="BYZ-38-t0r" id="vr0-m4-ONf"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="120" style="plain" systemItem="fixedSpace" id="Yg4-CA-HpW"/>
+                                    <barButtonItem width="88" style="plain" systemItem="fixedSpace" id="Yg4-CA-HpW"/>
+                                    <barButtonItem image="font-icon-9" id="hne-DA-TUT">
+                                        <connections>
+                                            <action selector="changeFontButtonWasTapped:" destination="BYZ-38-t0r" id="djp-oK-rDW"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1su-AO-hWF" userLabel="Container view">
@@ -133,6 +141,7 @@
                         <outlet property="bottomTextField" destination="qVi-gr-IlC" id="KYg-Uc-HwQ"/>
                         <outlet property="cameraButtonItem" destination="JxC-DJ-0oq" id="Fcl-rD-eSb"/>
                         <outlet property="cancelButton" destination="rYh-nB-cir" id="wh8-DM-Hdy"/>
+                        <outlet property="changeFontButton" destination="hne-DA-TUT" id="AG3-He-0bU"/>
                         <outlet property="containerView" destination="1su-AO-hWF" id="cSG-TL-wBE"/>
                         <outlet property="emptyView" destination="tVx-I0-g3K" id="HwP-k0-XXH"/>
                         <outlet property="imageView" destination="auj-eR-ZUN" id="ia0-bU-TGr"/>
@@ -261,6 +270,58 @@
             </objects>
             <point key="canvasLocation" x="1876" y="139"/>
         </scene>
+        <!--Font Chooser View Controller-->
+        <scene sceneID="dL8-UF-V0z">
+            <objects>
+                <viewController storyboardIdentifier="FontChooserViewController" id="05w-1L-pRV" customClass="FontChooserViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OM7-8m-t3o"/>
+                        <viewControllerLayoutGuide type="bottom" id="p6Z-If-SZl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iCX-6L-xip">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zCf-4f-TiU">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FontCell" id="uFM-tR-v4a">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uFM-tR-v4a" id="5hh-Xs-aI6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwS-JF-rTY">
+                                <rect key="frame" x="169" y="47" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonWasTapped" destination="05w-1L-pRV" eventType="touchUpInside" id="daU-rt-aUc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kwS-JF-rTY" firstAttribute="top" secondItem="OM7-8m-t3o" secondAttribute="bottom" constant="27" id="27y-Cs-QWL"/>
+                            <constraint firstItem="kwS-JF-rTY" firstAttribute="centerX" secondItem="iCX-6L-xip" secondAttribute="centerX" id="80V-sC-wp2"/>
+                            <constraint firstItem="zCf-4f-TiU" firstAttribute="top" secondItem="OM7-8m-t3o" secondAttribute="bottom" constant="100" id="EN9-BR-7ER"/>
+                            <constraint firstItem="p6Z-If-SZl" firstAttribute="top" secondItem="zCf-4f-TiU" secondAttribute="bottom" id="e1s-qC-msV"/>
+                            <constraint firstAttribute="trailing" secondItem="zCf-4f-TiU" secondAttribute="trailing" id="uy1-wW-B3D"/>
+                            <constraint firstItem="zCf-4f-TiU" firstAttribute="leading" secondItem="iCX-6L-xip" secondAttribute="leading" id="z8Q-2Q-RUU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="zCf-4f-TiU" id="gkL-3G-oD7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebp-wJ-tct" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1485.5999999999999" y="846.9265367316342"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="uLL-JK-Qbw">
             <objects>
@@ -288,6 +349,7 @@
     </scenes>
     <resources>
         <image name="collection" width="30" height="30"/>
+        <image name="font-icon-9" width="30" height="30"/>
         <image name="one-finger-tap" width="64" height="64"/>
         <image name="table" width="30" height="30"/>
     </resources>
