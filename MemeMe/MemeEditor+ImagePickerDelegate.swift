@@ -16,14 +16,15 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate, UINavigatio
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        guard let image = traitCollection.userInterfaceIdiom == .pad ? info[UIImagePickerControllerOriginalImage] as? UIImage : info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         imageView.image = image
+        initializeTextFields()
         topTextField.isEnabled = true
         bottomTextField.isEnabled = true
-        picker.dismiss(animated: true, completion: nil)
         shareButton.isEnabled = true
         cancelButton.isEnabled = true
         emptyView.isHidden = true
         changeFontButton.isEnabled = true
+        picker.dismiss(animated: true, completion: nil)
     }
 }

@@ -26,7 +26,8 @@ class MemeEditorViewController: UIViewController {
     var hasTopTextBeenModified = false
     var hasBottomTextBeenModified = false
     private var font = "Impact"
-    private let selectedFontUserDefaultsKey = "selectedFont"
+    let selectedFontUserDefaultsKey = "selectedFont"
+    private(set) var selectedFontName: String = "Impact"
 
     
     
@@ -48,11 +49,7 @@ class MemeEditorViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
 
-    
-    fileprivate func getSelectectedFontName() -> String {
-        let selectedFont = UserDefaults.standard.string(forKey: selectedFontUserDefaultsKey) ?? "Impact"
-        return selectedFont
-    }
+
     
     override func viewDidLayoutSubviews() {
         TapWaveAnimation.beginAnimation(on: emptyView)
@@ -65,10 +62,10 @@ class MemeEditorViewController: UIViewController {
     }
     
     func setTextFieldFont() {
-        let font = UserDefaults.standard.string(forKey: selectedFontUserDefaultsKey) ?? "Impact"
+        selectedFontName = UserDefaults.standard.string(forKey: selectedFontUserDefaultsKey) ?? "Impact"
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName: UIColor.black, NSStrokeWidthAttributeName: -5.0, NSFontAttributeName: UIFont(name: font, size: initialFontSize)!, NSParagraphStyleAttributeName: paragraphStyle]
+        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName: UIColor.black, NSStrokeWidthAttributeName: -5.0, NSFontAttributeName: UIFont(name: selectedFontName, size: initialFontSize)!, NSParagraphStyleAttributeName: paragraphStyle]
         let topText = topTextField.text!
         let bottomText = bottomTextField.text!
         topTextField.attributedText = NSAttributedString(string: topText, attributes: attributes)
@@ -100,6 +97,7 @@ class MemeEditorViewController: UIViewController {
     // MARK:- Selector for the GR on the initial empty view
     @objc private func tappedToChooseAnImage(gesture: UITapGestureRecognizer) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.modalPresentationStyle = .popover
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action: UIAlertAction) in
                 self.showPicker(from: .camera)
@@ -112,11 +110,19 @@ class MemeEditorViewController: UIViewController {
         alert.addAction(photoAlbumAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
+        
+        // Below is for the iPad
+        if let presenter = alert.popoverPresentationController {
+            presenter.sourceView = view
+            let height = view.frame.height
+            let width = view.frame.width
+            presenter.sourceRect = CGRect(x: width / 2, y: height - 40.0, width: 0, height: 0)
+        }
         present(alert, animated: true, completion: nil)
     }
     
     private func resetUserInterface() {
-        setupTextFields()
+        initializeTextFields()
         imageView.image = nil
         shareButton.isEnabled = false
         cancelButton.isEnabled = false
@@ -124,23 +130,24 @@ class MemeEditorViewController: UIViewController {
         changeFontButton.isEnabled = false
     }
     
-    private func setupTextFields() {
+    
+    func initializeTextFields() {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        let fontName = /*UserDefaults.standard.string(forKey: selectedFontUserDefaultsKey) ??*/ "Impact"
+        let fontName = selectedFontName
         let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName: UIColor.black, NSStrokeWidthAttributeName: -5.0, NSFontAttributeName: UIFont(name: fontName, size: initialFontSize)!, NSParagraphStyleAttributeName: paragraphStyle]
         
         topTextField.attributedText = NSAttributedString(string: "TOP", attributes: attributes)
         bottomTextField.attributedText = NSAttributedString(string: "BOTTOM", attributes: attributes)
-        
-        topTextField.allowsEditingTextAttributes = true
-        bottomTextField.allowsEditingTextAttributes = true
         
         topTextField.delegate = self
         bottomTextField.delegate = self
         
         hasTopTextBeenModified = false
         hasBottomTextBeenModified = false
+        
+        topTextField.resignFirstResponder()
+        bottomTextField.resignFirstResponder()
     }
     
     
@@ -212,7 +219,8 @@ class MemeEditorViewController: UIViewController {
     
     private func showPicker(from source: UIImagePickerControllerSourceType) {
         let picker = UIImagePickerController()
-        picker.allowsEditing = true
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: source)!
+        picker.allowsEditing = traitCollection.userInterfaceIdiom != .pad // Problem on iPad
         picker.sourceType = source
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)

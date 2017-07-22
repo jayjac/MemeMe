@@ -9,6 +9,8 @@
 import UIKit
 
 
+
+//MARK: This struct contains the function that does the wave-like effect on the main screen
 struct TapWaveAnimation {
     
     static let flickerLayer = CALayer()

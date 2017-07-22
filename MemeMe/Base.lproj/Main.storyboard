@@ -27,24 +27,25 @@
                                     <constraint firstAttribute="height" constant="44" id="cpg-1M-yCL"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem width="120" style="plain" systemItem="fixedSpace" id="4Lp-J3-nZG"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WBf-p9-nuv"/>
                                     <barButtonItem systemItem="camera" id="JxC-DJ-0oq">
                                         <connections>
                                             <action selector="takeAPictureThruDevice:" destination="BYZ-38-t0r" id="8MU-u3-2CT"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="40" style="plain" systemItem="fixedSpace" id="pkE-bU-Och"/>
+                                    <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="gWg-qP-cay"/>
                                     <barButtonItem systemItem="organize" id="LtY-fA-HFq">
                                         <connections>
                                             <action selector="choosePictureFromPhotoLibrary:" destination="BYZ-38-t0r" id="vr0-m4-ONf"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="88" style="plain" systemItem="fixedSpace" id="Yg4-CA-HpW"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="I5n-6I-EvA"/>
                                     <barButtonItem image="font-icon-9" id="hne-DA-TUT">
                                         <connections>
                                             <action selector="changeFontButtonWasTapped:" destination="BYZ-38-t0r" id="djp-oK-rDW"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="ZN1-Ke-tii"/>
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1su-AO-hWF" userLabel="Container view">
@@ -54,17 +55,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="WJU-yV-4bd" userLabel="Top Text">
-                                        <rect key="frame" x="16" y="27" width="343" height="40"/>
+                                        <rect key="frame" x="16" y="27" width="343" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="xqZ-ok-GM6"/>
+                                            <constraint firstAttribute="height" constant="50" id="xqZ-ok-GM6"/>
                                         </constraints>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="qVi-gr-IlC" userLabel="Bottom Text">
-                                        <rect key="frame" x="16" y="494" width="343" height="40"/>
+                                        <rect key="frame" x="16" y="484" width="343" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="7T1-Cp-n5A"/>
+                                            <constraint firstAttribute="height" constant="50" id="7T1-Cp-n5A"/>
                                         </constraints>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -282,8 +283,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwS-JF-rTY">
+                                <rect key="frame" x="169" y="47" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonWasTapped" destination="05w-1L-pRV" eventType="touchUpInside" id="daU-rt-aUc"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zCf-4f-TiU">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FontCell" id="uFM-tR-v4a">
@@ -296,19 +304,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwS-JF-rTY">
-                                <rect key="frame" x="169" y="47" width="37" height="30"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="doneButtonWasTapped" destination="05w-1L-pRV" eventType="touchUpInside" id="daU-rt-aUc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kwS-JF-rTY" firstAttribute="top" secondItem="OM7-8m-t3o" secondAttribute="bottom" constant="27" id="27y-Cs-QWL"/>
                             <constraint firstItem="kwS-JF-rTY" firstAttribute="centerX" secondItem="iCX-6L-xip" secondAttribute="centerX" id="80V-sC-wp2"/>
-                            <constraint firstItem="zCf-4f-TiU" firstAttribute="top" secondItem="OM7-8m-t3o" secondAttribute="bottom" constant="100" id="EN9-BR-7ER"/>
+                            <constraint firstItem="zCf-4f-TiU" firstAttribute="top" secondItem="OM7-8m-t3o" secondAttribute="bottom" constant="80" id="EN9-BR-7ER"/>
                             <constraint firstItem="p6Z-If-SZl" firstAttribute="top" secondItem="zCf-4f-TiU" secondAttribute="bottom" id="e1s-qC-msV"/>
                             <constraint firstAttribute="trailing" secondItem="zCf-4f-TiU" secondAttribute="trailing" id="uy1-wW-B3D"/>
                             <constraint firstItem="zCf-4f-TiU" firstAttribute="leading" secondItem="iCX-6L-xip" secondAttribute="leading" id="z8Q-2Q-RUU"/>

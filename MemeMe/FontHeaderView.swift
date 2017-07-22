@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+// Floating header view in the font chooser table view
 class FontHeaderView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var label: UILabel!
@@ -19,12 +21,5 @@ class FontHeaderView: UITableViewHeaderFooterView {
         label.backgroundColor =  UIColor.blue
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

@@ -8,13 +8,17 @@
 
 import UIKit
 
+
+//View controller that's shown to allow the user to pick a different font
+//It'll consist of a tableview whose has as many sections as there are familyNames installed on the device
+//Each section will have as many rows as there are fonts in one family
 class FontChooserViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     fileprivate let fontFamilies = UIFont.familyNames
     fileprivate var selectedIndexPath: IndexPath?
     fileprivate let selectedFontUserDefaultsKey = "selectedFont"
-    fileprivate let fontHeaderSectionIdentifier = "FontHeader"
+    fileprivate let fontHeaderSectionIdentifier = "FontHeader" //Reuse identifier
 
     
     
@@ -23,18 +27,18 @@ class FontChooserViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        let font = UserDefaults.standard.string(forKey: selectedFontUserDefaultsKey)
-        setFont(to: font ?? "Impact")
-        
         let headerNib = UINib(nibName: "FontHeaderView", bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: fontHeaderSectionIdentifier)
+        
+        let font = UserDefaults.standard.string(forKey: selectedFontUserDefaultsKey) ?? "Impact"
+        setFont(to: font)
     }
     
     fileprivate func setFont(to fontName: String) {
         UserDefaults.standard.setValue(fontName, forKey: selectedFontUserDefaultsKey)
-        guard selectedIndexPath == nil else { return } // avoid to loop through all system fonts on every change
+        guard selectedIndexPath == nil else { return } // avoid to loop through all system fonts unnecessarily on every font change
         selectedIndexPath = getIndexPath(of: fontName)
-        tableView.scrollToRow(at: selectedIndexPath!, at: .middle, animated: false)
+        tableView.scrollToRow(at: selectedIndexPath!, at: .middle, animated: false) // goes straight to the selected font when user opens font chooser
     }
     
     fileprivate func getFont(at indexPath: IndexPath) -> String {
@@ -87,7 +91,7 @@ extension FontChooserViewController: UITableViewDataSource, UITableViewDelegate 
         let fontName = getFont(at: indexPath)
         cell.textLabel?.text = fontName
         cell.textLabel?.font = UIFont(name: fontName, size: 16.0)
-        cell.accessoryType = .none // clears the checkmark on cell reuse
+        cell.accessoryType = .none // clears the checkmark before cell re-use
         
         if selectedIndexPath == indexPath {
             checkCell(cell, at: indexPath)
@@ -126,7 +130,7 @@ extension FontChooserViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30.0
+        return 24.0
     }
     
 }

@@ -15,7 +15,7 @@ extension MemeEditorViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName: UIColor.black, NSStrokeWidthAttributeName: -5.0, NSFontAttributeName: UIFont(name: "Impact", size: initialFontSize)!, NSParagraphStyleAttributeName: paragraphStyle]
+        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName: UIColor.black, NSStrokeWidthAttributeName: -5.0, NSFontAttributeName: UIFont(name: selectedFontName, size: initialFontSize)!, NSParagraphStyleAttributeName: paragraphStyle]
         let text = textField.text! as NSString
         let newText = text.replacingCharacters(in: range, with: string)
         textField.attributedText = NSAttributedString(string: newText, attributes: attributes)
