@@ -188,10 +188,15 @@ class MemeEditorViewController: UIViewController {
         guard let topText = topTextField.text,
         let bottomText = bottomTextField.text,
             let originalImage = imageView.image else { return }
+        if let presenter = activityVC.popoverPresentationController {
+            presenter.sourceView = view
+            presenter.sourceRect = CGRect(x: 11.0, y: 10.0, width: 50.0, height: 50.0)
+        }
         activityVC.completionWithItemsHandler = { (type: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
             if completed {
-                _ = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memedImage: memedImage)
+                let meme = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memedImage: memedImage, fontName: self.selectedFontName)
                 //TODO: follow instructions in version 2.0
+                FileCreator.saveMemeOnDisk(meme)
             }
             
         }
