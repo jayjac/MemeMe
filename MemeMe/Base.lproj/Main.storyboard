@@ -98,7 +98,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="tVx-I0-g3K" firstAttribute="top" secondItem="1su-AO-hWF" secondAttribute="top" id="2JO-uk-0aO"/>
                                     <constraint firstAttribute="trailing" secondItem="WJU-yV-4bd" secondAttribute="trailing" constant="16" id="90Q-Yu-mY0"/>
                                     <constraint firstItem="tVx-I0-g3K" firstAttribute="leading" secondItem="1su-AO-hWF" secondAttribute="leading" id="9nY-BN-zKG"/>
                                     <constraint firstAttribute="trailing" secondItem="auj-eR-ZUN" secondAttribute="trailing" id="AFA-pc-viM"/>
@@ -123,6 +122,7 @@
                             <constraint firstItem="1su-AO-hWF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JJ0-21-09k"/>
                             <constraint firstAttribute="trailing" secondItem="BMK-0J-oBJ" secondAttribute="trailing" id="NVb-vt-aKC"/>
                             <constraint firstItem="BMK-0J-oBJ" firstAttribute="top" secondItem="1su-AO-hWF" secondAttribute="bottom" id="aMK-8x-arY"/>
+                            <constraint firstItem="tVx-I0-g3K" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="msQ-z1-Own"/>
                             <constraint firstItem="BMK-0J-oBJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="t9P-34-Kx3"/>
                         </constraints>
                     </view>

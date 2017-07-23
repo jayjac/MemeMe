@@ -12,6 +12,11 @@ import UIKit
 //MARK: version 2.0
 struct FileCreator {
     
+    private static let memesMainPath = "Memes"
+    private static let originalImagePath = "originalImage.jpeg"
+    private static let memedImagePath = "memedImage.jpeg"
+    private static let metaDataPath = "data.bin"
+    
     static var memesDirectoryUrl: URL {
         let documentUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let memesDirectory = documentUrl.appendingPathComponent("Memes", isDirectory: true)
@@ -31,7 +36,6 @@ struct FileCreator {
     static func saveMemeOnDisk(_ meme: Meme) {
         let date = Date()
         let directoryName = "\(date.timeIntervalSinceReferenceDate)"
-        print("Saving to \(directoryName) ...")
         let url = memesDirectoryUrl.appendingPathComponent(directoryName, isDirectory: true)
         do {
             try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false)
@@ -42,14 +46,13 @@ struct FileCreator {
         let originalData = UIImageJPEGRepresentation(meme.originalImage, 1.0)
         let memedData = UIImageJPEGRepresentation(meme.memedImage, 1.0)
         
-        let originalImageUrl = url.appendingPathComponent("originalImage.jpeg", isDirectory: false)
-        let memedImageUrl = url.appendingPathComponent("memedImage.jpeg", isDirectory: false)
-        let metaDataUrl = url.appendingPathComponent("data.bin", isDirectory: false)
+        let originalImageUrl = url.appendingPathComponent(originalImagePath, isDirectory: false)
+        let memedImageUrl = url.appendingPathComponent(memedImagePath, isDirectory: false)
+        let metaDataUrl = url.appendingPathComponent(metaDataPath, isDirectory: false)
         do {
             try originalData?.write(to: originalImageUrl)
             try memedData?.write(to: memedImageUrl)
             metaData.write(to: metaDataUrl, atomically: true)
-            print("saved the meme")
         }
         catch {
             print("error saving the meme")
@@ -58,7 +61,13 @@ struct FileCreator {
     }
     
     static func lookupMemes() {
-        
+        guard let urls = try? FileManager.default.contentsOfDirectory(at: memesDirectoryUrl, includingPropertiesForKeys: [], options: .skipsHiddenFiles) else { return }
+        for url in urls {
+            print(url)
+            let dataUrl = url.appendingPathComponent(metaDataPath, isDirectory: false)
+            let dictionary = NSDictionary(contentsOf: dataUrl)
+            print(dictionary!)
+        }
     }
 
 }

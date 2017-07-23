@@ -52,6 +52,7 @@ class MemeEditorViewController: UIViewController {
 
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         TapWaveAnimation.beginAnimation(on: emptyView)
     }
     
@@ -132,22 +133,20 @@ class MemeEditorViewController: UIViewController {
     
     
     func initializeTextFields() {
+        configureTextField(topTextField, text: "TOP")
+        hasTopTextBeenModified = false
+        configureTextField(bottomTextField, text: "BOTTOM")
+        hasBottomTextBeenModified = false
+    }
+    
+    //MARK: added this func to avoid repetition 
+    private func configureTextField(_ textfield: UITextField, text: String) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        let fontName = selectedFontName
-        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName: UIColor.black, NSStrokeWidthAttributeName: -5.0, NSFontAttributeName: UIFont(name: fontName, size: initialFontSize)!, NSParagraphStyleAttributeName: paragraphStyle]
-        
-        topTextField.attributedText = NSAttributedString(string: "TOP", attributes: attributes)
-        bottomTextField.attributedText = NSAttributedString(string: "BOTTOM", attributes: attributes)
-        
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        
-        hasTopTextBeenModified = false
-        hasBottomTextBeenModified = false
-        
-        topTextField.resignFirstResponder()
-        bottomTextField.resignFirstResponder()
+        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName: UIColor.black, NSStrokeWidthAttributeName: -5.0, NSFontAttributeName: UIFont(name: selectedFontName, size: initialFontSize)!, NSParagraphStyleAttributeName: paragraphStyle]
+        textfield.attributedText = NSAttributedString(string: text, attributes: attributes)
+        textfield.delegate = self
+        textfield.resignFirstResponder()
     }
     
     
@@ -224,8 +223,8 @@ class MemeEditorViewController: UIViewController {
     
     private func showPicker(from source: UIImagePickerControllerSourceType) {
         let picker = UIImagePickerController()
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: source)!
-        picker.allowsEditing = traitCollection.userInterfaceIdiom != .pad // Problem on iPad
+        //picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: source)!
+        picker.allowsEditing = false
         picker.sourceType = source
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
