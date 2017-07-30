@@ -123,13 +123,13 @@
 		E90CDF971EECAA72008E5763 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				E90CDFA41EECAA72008E5763 /* Info.plist */,
 				E99940121EFFABDF00AAC01E /* Fonts */,
 				E99D25371F2349B40004F128 /* FontChooser */,
 				E90CDF981EECAA72008E5763 /* AppDelegate.swift */,
 				E90CDF9C1EECAA72008E5763 /* Main.storyboard */,
 				E90CDFA11EECAA72008E5763 /* LaunchScreen.storyboard */,
 				E90CDF9F1EECAA72008E5763 /* Assets.xcassets */,
-				E90CDFA41EECAA72008E5763 /* Info.plist */,
 				E90CDFC61EEE93D9008E5763 /* MemeEditorViewController.swift */,
 				E99D25331F2261580004F128 /* MemeEditor+ImagePickerDelegate.swift */,
 				E99D25351F2261A50004F128 /* MemeEditor+TextFieldDelegate.swift */,

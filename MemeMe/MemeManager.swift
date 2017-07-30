@@ -19,6 +19,7 @@ struct MemeDataSourceModel {
     let topText: String
     let bottomText: String
     let fontName: String
+    let date: Date
     let activityType: UIActivityType?
 }
 
@@ -47,7 +48,6 @@ struct MemeManager {
         guard !FileManager.default.fileExists(atPath: memesDirectoryUrl.path) else { return }
         do {
             try FileManager.default.createDirectory(at: memesDirectoryUrl, withIntermediateDirectories: false)
-            //print("created directory at \(memesDirectoryUrl)")
         } catch let err {
             print(err)
         }
@@ -59,10 +59,9 @@ struct MemeManager {
         let url = memesDirectoryUrl.appendingPathComponent(directoryName, isDirectory: true)
         do {
             try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false)
-            print("created directory successfully")
         }
         catch {}
-        let metaData = ["topText": meme.topText, "bottomText": meme.bottomText, "fontName": meme.fontName, "activityType": meme.activityType ?? ""] as NSDictionary
+        let metaData = ["topText": meme.topText, "bottomText": meme.bottomText, "fontName": meme.fontName, "activityType": meme.activityType ?? "", "date": date] as NSDictionary
         let originalData = UIImageJPEGRepresentation(meme.originalImage, 1.0)
         let memedData = UIImageJPEGRepresentation(meme.memedImage, 1.0)
         
@@ -101,8 +100,9 @@ struct MemeManager {
             let topText = metaData["topText"] as! String
             let bottomText = metaData["bottomText"] as! String
             let fontName = metaData["fontName"] as! String
+            let date = metaData["date"] as! Date
             let activityType = metaData["activityType"] as? UIActivityType
-            let model = MemeDataSourceModel(originalImageUrl: originalImageUrl, memedImageUrl: memedImageUrl, topText: topText, bottomText: bottomText, fontName: fontName, activityType: activityType)
+            let model = MemeDataSourceModel(originalImageUrl: originalImageUrl, memedImageUrl: memedImageUrl, topText: topText, bottomText: bottomText, fontName: fontName, date: date, activityType: activityType)
             dataSourceModel.append(model)
         }
         memesArray = dataSourceModel.reversed() //reverse it to have the memes appear in reverse chronological order in both the collectionView and the tableView

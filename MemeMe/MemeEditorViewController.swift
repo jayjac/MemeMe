@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class MemeEditorViewController: UIViewController {
     
@@ -48,26 +49,28 @@ class MemeEditorViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        
-        
+
         //If we're being segue'd into this view from the 'sent memes' view controller to edit a meme
-        if let dataSource = dataSourceModel {
-            emptyView.isHidden = true
-            topTextField.text = dataSource.topText
-            bottomTextField.text = dataSource.bottomText
-            imageView.image = UIImage(contentsOfFile: dataSource.originalImageUrl.path)
-            topTextField.isEnabled = true
-            bottomTextField.isEnabled = true
-            shareButton.isEnabled = true
-            cancelButton.isEnabled = true
-            emptyView.isHidden = true
-            changeFontButton.isEnabled = true
-            hasTopTextBeenModified = true
-            hasBottomTextBeenModified = true
-            UserDefaults.standard.setValue(dataSource.fontName, forKey: selectedFontUserDefaultsKey)
-        }
+        guard let dataSource = dataSourceModel else { return }
+        applyDataSource(dataSource)
     }
 
+    
+    private func applyDataSource(_ dataSource: MemeDataSourceModel) {
+        emptyView.isHidden = true
+        topTextField.text = dataSource.topText
+        bottomTextField.text = dataSource.bottomText
+        imageView.image = UIImage(contentsOfFile: dataSource.originalImageUrl.path)
+        topTextField.isEnabled = true
+        bottomTextField.isEnabled = true
+        shareButton.isEnabled = true
+        cancelButton.isEnabled = false
+        emptyView.isHidden = true
+        changeFontButton.isEnabled = true
+        hasTopTextBeenModified = true
+        hasBottomTextBeenModified = true
+        UserDefaults.standard.setValue(dataSource.fontName, forKey: selectedFontUserDefaultsKey)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -212,12 +215,13 @@ class MemeEditorViewController: UIViewController {
             let originalImage = imageView.image else { return }
         if let presenter = activityVC.popoverPresentationController {
             presenter.sourceView = view
-            presenter.sourceRect = CGRect(x: 11.0, y: 10.0, width: 50.0, height: 50.0)
+            presenter.sourceRect = CGRect(x: 10.0, y: view.bounds.height - 50.0, width: 50.0, height: 50.0)
         }
         activityVC.completionWithItemsHandler = { (type: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
             if completed {
                 let meme = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memedImage: memedImage, fontName: self.selectedFontName, activityType: type)
                 MemeManager.saveMemeOnDisk(meme)
+                self.navigationController?.popViewController(animated: true)
             }
             
         }
@@ -245,7 +249,7 @@ class MemeEditorViewController: UIViewController {
     
     private func showPicker(from source: UIImagePickerControllerSourceType) {
         let picker = UIImagePickerController()
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: source)!
+        picker.mediaTypes = [kUTTypeImage as String] //to make sure user doesn't select videos
         picker.allowsEditing = false
         picker.sourceType = source
         picker.delegate = self

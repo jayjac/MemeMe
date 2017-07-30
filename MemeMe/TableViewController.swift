@@ -28,6 +28,7 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
 
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -42,23 +43,23 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemesTableViewCell
         let index = indexPath.row
         let meme = MemeManager.memesArray[index]
-        let font = UIFont(name: "Arial", size: 12.0)
         cell.topTextLabel.text = meme.topText + " " + meme.bottomText
-        cell.topTextLabel.font = font
         cell.pictureImageView.image = UIImage(contentsOfFile: meme.originalImageUrl.path)
         cell.activityTypeLabel.text = ""
         if let activityType = meme.activityType {
-            let url = meme.originalImageUrl.deletingLastPathComponent()
-            let dateString = url.lastPathComponent
-            let timeInterval = Double(dateString)!
-            let date = Date(timeIntervalSinceReferenceDate: timeInterval)
-            
+            let date = meme.date
             switch activityType {
             case UIActivityType.postToFacebook:
                 cell.activityTypeLabel.text = "Shared on Facebook"
 
             case UIActivityType.postToTwitter:
                 cell.activityTypeLabel.text = "Shared on Twitter"
+                
+            case UIActivityType.postToFlickr:
+                cell.activityTypeLabel.text = "Shared on Flickr"
+                
+            case UIActivityType.postToVimeo:
+                cell.activityTypeLabel.text = "Shared on Vimeo"
 
             case UIActivityType.message:
                 cell.activityTypeLabel.text = "Sent via text message"
@@ -69,7 +70,7 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
             default:
                 cell.activityTypeLabel.text = "Shared via unknown medium"
             }
-            cell.activityTypeLabel.text = "(\(cell.activityTypeLabel.text!) \(dateFormatter.string(from: date)))"
+            cell.activityTypeLabel.text = "(\(cell.activityTypeLabel.text!) on \(dateFormatter.string(from: date)))"
         }
         return cell
     }

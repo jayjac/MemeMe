@@ -23,6 +23,10 @@ class MemesCollectionViewController: UIViewController, UICollectionViewDataSourc
         collectionView.delegate = self
     }
     
+
+    
+
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.reloadData()
@@ -30,7 +34,7 @@ class MemesCollectionViewController: UIViewController, UICollectionViewDataSourc
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.setCollectionViewLayout(collectionView.collectionViewLayout, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
