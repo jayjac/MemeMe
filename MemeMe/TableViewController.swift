@@ -17,14 +17,22 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
     private let cellReuseIdentifier = "MemeTableViewCell"
     private let editMemeSegueIdentifier = "EditMemeSegue"
     private var selectedIndexPath: IndexPath?
+    private let dateFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
         tableView.delegate = self
         tableView.dataSource = self
     }
     
 
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
@@ -35,11 +43,34 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
         let index = indexPath.row
         let meme = MemeManager.memesArray[index]
         let font = UIFont(name: "Arial", size: 12.0)
-        cell.topTextLabel.text = meme.topText
+        cell.topTextLabel.text = meme.topText + " " + meme.bottomText
         cell.topTextLabel.font = font
-        cell.bottomTextLabel.text = meme.bottomText
-        cell.bottomTextLabel.font = font
         cell.pictureImageView.image = UIImage(contentsOfFile: meme.originalImageUrl.path)
+        cell.activityTypeLabel.text = ""
+        if let activityType = meme.activityType {
+            let url = meme.originalImageUrl.deletingLastPathComponent()
+            let dateString = url.lastPathComponent
+            let timeInterval = Double(dateString)!
+            let date = Date(timeIntervalSinceReferenceDate: timeInterval)
+            
+            switch activityType {
+            case UIActivityType.postToFacebook:
+                cell.activityTypeLabel.text = "Shared on Facebook"
+
+            case UIActivityType.postToTwitter:
+                cell.activityTypeLabel.text = "Shared on Twitter"
+
+            case UIActivityType.message:
+                cell.activityTypeLabel.text = "Sent via text message"
+                
+            case UIActivityType.mail:
+                cell.activityTypeLabel.text = "Sent via email"
+                
+            default:
+                cell.activityTypeLabel.text = "Shared via unknown medium"
+            }
+            cell.activityTypeLabel.text = "(\(cell.activityTypeLabel.text!) \(dateFormatter.string(from: date)))"
+        }
         return cell
     }
     
@@ -50,13 +81,16 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         selectedIndexPath = indexPath
-        performSegue(withIdentifier: "EditMemeSegue", sender: nil)
+        performSegue(withIdentifier: editMemeSegueIdentifier, sender: nil)
     }
     
     
-//    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-//        return false
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            MemeManager.deleteMemeFromDisk(with: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = selectedIndexPath else { return }

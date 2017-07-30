@@ -13,8 +13,9 @@ import UIKit
 class MemesCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     private let cellReuseIdentifier = "MemesCollectionViewCell"
-    private let segueIdentifier = "EditMemeSegue"
+    private let editMemeSegueIdentifier = "EditMemeSegue"
     @IBOutlet weak var collectionView: UICollectionView!
+    private var selectedIndexPath: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +23,33 @@ class MemesCollectionViewController: UIViewController, UICollectionViewDataSourc
         collectionView.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = selectedIndexPath else { return }
+        if segue.identifier == editMemeSegueIdentifier {
+            let memeEditor = segue.destination as! MemeEditorViewController
+            let dataSource = MemeManager.memesArray[indexPath.row]
+            memeEditor.setMeme(from: dataSource)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 400
+        return MemeManager.memesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! MemesCollectionViewCell
         if MemeManager.memesArray.count > 0 {
-            let index = 0 //indexPath.row
+            let index = indexPath.row
             let meme = MemeManager.memesArray[index]
             cell.topTextLabel.text = meme.topText
             cell.bottomTextLabel.text = meme.bottomText
@@ -50,7 +65,8 @@ class MemesCollectionViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: segueIdentifier, sender: nil)
+        selectedIndexPath = indexPath
+        performSegue(withIdentifier: editMemeSegueIdentifier, sender: nil)
     }
 
 

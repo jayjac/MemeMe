@@ -13,7 +13,7 @@ class MemesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var topTextLabel: UILabel!
-    @IBOutlet weak var bottomTextLabel: UILabel!
+    @IBOutlet weak var activityTypeLabel: UILabel!
     
 
 }

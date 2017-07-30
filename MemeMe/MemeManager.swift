@@ -77,7 +77,17 @@ struct MemeManager {
         catch {
             print("error saving the meme")
         }
-        
+        lookupMemesOnDisk()
+    }
+    
+    
+    static func deleteMemeFromDisk(with index: Int) {
+        let dataSourceModel = memesArray[index]
+        let url = dataSourceModel.originalImageUrl.deletingLastPathComponent()
+        do {
+            try FileManager.default.removeItem(at: url)
+        } catch {}
+        memesArray.remove(at: index)
     }
     
     private static func lookupMemesOnDisk() {
@@ -95,7 +105,7 @@ struct MemeManager {
             let model = MemeDataSourceModel(originalImageUrl: originalImageUrl, memedImageUrl: memedImageUrl, topText: topText, bottomText: bottomText, fontName: fontName, activityType: activityType)
             dataSourceModel.append(model)
         }
-        memesArray = dataSourceModel
+        memesArray = dataSourceModel.reversed() //reverse it to have the memes appear in reverse chronological order in both the collectionView and the tableView
     }
 
 }

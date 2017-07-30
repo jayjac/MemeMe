@@ -62,9 +62,11 @@ class MemeEditorViewController: UIViewController {
             cancelButton.isEnabled = true
             emptyView.isHidden = true
             changeFontButton.isEnabled = true
+            hasTopTextBeenModified = true
+            hasBottomTextBeenModified = true
+            UserDefaults.standard.setValue(dataSource.fontName, forKey: selectedFontUserDefaultsKey)
         }
     }
-
 
     
     override func viewDidLayoutSubviews() {
@@ -72,14 +74,14 @@ class MemeEditorViewController: UIViewController {
         TapWaveAnimation.beginAnimation(on: emptyView)
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setTextFieldFont()
     }
+
     
     func setTextFieldFont() {
-        selectedFontName = UserDefaults.standard.string(forKey: selectedFontUserDefaultsKey) ?? "Impact"
+        selectedFontName = UserDefaults.standard.string(forKey: selectedFontUserDefaultsKey) ?? selectedFontName
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSStrokeColorAttributeName: UIColor.black, NSStrokeWidthAttributeName: -5.0, NSFontAttributeName: UIFont(name: selectedFontName, size: initialFontSize)!, NSParagraphStyleAttributeName: paragraphStyle]
