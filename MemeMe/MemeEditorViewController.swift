@@ -28,6 +28,7 @@ class MemeEditorViewController: UIViewController {
     private var font = "Impact"
     let selectedFontUserDefaultsKey = "selectedFont"
     private(set) var selectedFontName: String = "Impact"
+    private var dataSourceModel: MemeDataSourceModel?
 
     
     
@@ -47,6 +48,21 @@ class MemeEditorViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        
+        
+        //If we're being segue'd into this view from the 'sent memes' view controller to edit a meme
+        if let dataSource = dataSourceModel {
+            emptyView.isHidden = true
+            topTextField.text = dataSource.topText
+            bottomTextField.text = dataSource.bottomText
+            imageView.image = UIImage(contentsOfFile: dataSource.originalImageUrl.path)
+            topTextField.isEnabled = true
+            bottomTextField.isEnabled = true
+            shareButton.isEnabled = true
+            cancelButton.isEnabled = true
+            emptyView.isHidden = true
+            changeFontButton.isEnabled = true
+        }
     }
 
 
@@ -179,6 +195,11 @@ class MemeEditorViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    
+    func setMeme(from dataSource: MemeDataSourceModel) {
+        dataSourceModel = dataSource
+    }
+    
     //MARK:- IBOutlets
     @IBAction func shareMemeButtonWasTapped(_ sender: Any) {
         guard imageView.image != nil else { return }
@@ -193,9 +214,8 @@ class MemeEditorViewController: UIViewController {
         }
         activityVC.completionWithItemsHandler = { (type: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
             if completed {
-                let meme = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memedImage: memedImage, fontName: self.selectedFontName)
-                //TODO: follow instructions in version 2.0
-                FileCreator.saveMemeOnDisk(meme)
+                let meme = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memedImage: memedImage, fontName: self.selectedFontName, activityType: type)
+                MemeManager.saveMemeOnDisk(meme)
             }
             
         }
@@ -223,7 +243,7 @@ class MemeEditorViewController: UIViewController {
     
     private func showPicker(from source: UIImagePickerControllerSourceType) {
         let picker = UIImagePickerController()
-        //picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: source)!
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: source)!
         picker.allowsEditing = false
         picker.sourceType = source
         picker.delegate = self

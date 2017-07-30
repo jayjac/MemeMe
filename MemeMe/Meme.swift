@@ -15,6 +15,7 @@ struct Meme {
     let originalImage: UIImage
     let memedImage: UIImage
     let fontName: String
+    let activityType: UIActivityType?
     
     static func generateMeme(from view: UIView) -> UIImage {
         UIGraphicsBeginImageContext(view.frame.size)

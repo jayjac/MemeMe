@@ -10,12 +10,26 @@ import UIKit
 
 
 //MARK: version 2.0
-struct FileCreator {
+/** Saves, deletes, looks up memes that are saved on the disk
+*/
+
+struct MemeDataSourceModel {
+    let originalImageUrl: URL
+    let memedImageUrl: URL
+    let topText: String
+    let bottomText: String
+    let fontName: String
+    let activityType: UIActivityType?
+}
+
+
+struct MemeManager {
     
     private static let memesMainPath = "Memes"
     private static let originalImagePath = "originalImage.jpeg"
     private static let memedImagePath = "memedImage.jpeg"
     private static let metaDataPath = "data.bin"
+    private(set) static var memesArray = [MemeDataSourceModel]()
     
     static var memesDirectoryUrl: URL {
         let documentUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -23,11 +37,17 @@ struct FileCreator {
         return memesDirectory
     }
     
-    static func createMemesDirectory() {
+    
+    static func initializeMemeData() {
+        createMemesDirectoryIfDoesntExist()
+        lookupMemesOnDisk()
+    }
+    
+    private static func createMemesDirectoryIfDoesntExist() {
         guard !FileManager.default.fileExists(atPath: memesDirectoryUrl.path) else { return }
         do {
             try FileManager.default.createDirectory(at: memesDirectoryUrl, withIntermediateDirectories: false)
-            print("created directory at \(memesDirectoryUrl)")
+            //print("created directory at \(memesDirectoryUrl)")
         } catch let err {
             print(err)
         }
@@ -42,7 +62,7 @@ struct FileCreator {
             print("created directory successfully")
         }
         catch {}
-        let metaData = ["topText": meme.topText, "bottomText": meme.bottomText, "fontName": meme.fontName] as NSDictionary
+        let metaData = ["topText": meme.topText, "bottomText": meme.bottomText, "fontName": meme.fontName, "activityType": meme.activityType ?? ""] as NSDictionary
         let originalData = UIImageJPEGRepresentation(meme.originalImage, 1.0)
         let memedData = UIImageJPEGRepresentation(meme.memedImage, 1.0)
         
@@ -60,14 +80,22 @@ struct FileCreator {
         
     }
     
-    static func lookupMemes() {
+    private static func lookupMemesOnDisk() {
         guard let urls = try? FileManager.default.contentsOfDirectory(at: memesDirectoryUrl, includingPropertiesForKeys: [], options: .skipsHiddenFiles) else { return }
+        var dataSourceModel = [MemeDataSourceModel]()
         for url in urls {
-            print(url)
             let dataUrl = url.appendingPathComponent(metaDataPath, isDirectory: false)
-            let dictionary = NSDictionary(contentsOf: dataUrl)
-            print(dictionary!)
+            let metaData = NSDictionary(contentsOf: dataUrl)!
+            let originalImageUrl = url.appendingPathComponent(originalImagePath)
+            let memedImageUrl = url.appendingPathComponent(memedImagePath)
+            let topText = metaData["topText"] as! String
+            let bottomText = metaData["bottomText"] as! String
+            let fontName = metaData["fontName"] as! String
+            let activityType = metaData["activityType"] as? UIActivityType
+            let model = MemeDataSourceModel(originalImageUrl: originalImageUrl, memedImageUrl: memedImageUrl, topText: topText, bottomText: bottomText, fontName: fontName, activityType: activityType)
+            dataSourceModel.append(model)
         }
+        memesArray = dataSourceModel
     }
 
 }

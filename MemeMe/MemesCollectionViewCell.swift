@@ -11,4 +11,9 @@ import UIKit
 // MARK:- For version 2.0
 class MemesCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var pictureImageView: UIImageView!
+    @IBOutlet weak var topTextLabel: UILabel!
+    @IBOutlet weak var bottomTextLabel: UILabel!
+    
+    
 }
