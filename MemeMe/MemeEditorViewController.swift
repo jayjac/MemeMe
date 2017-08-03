@@ -229,7 +229,8 @@ class MemeEditorViewController: UIViewController {
     }
     
     @IBAction func cancelButtonWasTapped(_ sender: Any) {
-        resetUserInterface()
+        navigationController?.popViewController(animated: true)
+        //resetUserInterface()
     }
 
 

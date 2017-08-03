@@ -21,13 +21,16 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
+        initializeDateFormatter()
         tableView.delegate = self
         tableView.dataSource = self
     }
     
 
+    private func initializeDateFormatter() {
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+    }
 
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,8 +83,8 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         selectedIndexPath = indexPath
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: editMemeSegueIdentifier, sender: nil)
     }
     
@@ -93,6 +96,7 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    // When the user selects a row, the "EditMemeSegue" is triggered. We set the meme to be displayed in the next view controller here
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = selectedIndexPath else { return }
         if segue.identifier == editMemeSegueIdentifier {

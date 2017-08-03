@@ -63,6 +63,7 @@
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="WJU-yV-4bd" userLabel="Top Text">
                                         <rect key="frame" x="16" y="27" width="343" height="60"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="xqZ-ok-GM6"/>
                                         </constraints>
@@ -71,6 +72,7 @@
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="qVi-gr-IlC" userLabel="Bottom Text">
                                         <rect key="frame" x="16" y="425" width="343" height="60"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="7T1-Cp-n5A"/>
                                         </constraints>
@@ -241,7 +243,7 @@
         <scene sceneID="7CE-dp-ShG">
             <objects>
                 <navigationController id="xn7-Tj-08o" customClass="MainViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qeK-F1-KD9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qeK-F1-KD9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -379,8 +381,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwS-JF-rTY">
-                                <rect key="frame" x="169" y="47" width="37" height="30"/>
-                                <state key="normal" title="Done"/>
+                                <rect key="frame" x="164.5" y="40" width="46" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.94058334830000001" green="0.57152521609999996" blue="0.2156203538" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="doneButtonWasTapped" destination="05w-1L-pRV" eventType="touchUpInside" id="daU-rt-aUc"/>
                                 </connections>
@@ -396,13 +401,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.94058334830000001" green="0.57152521609999996" blue="0.2156203538" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kwS-JF-rTY" firstAttribute="top" secondItem="OM7-8m-t3o" secondAttribute="bottom" constant="27" id="27y-Cs-QWL"/>
+                            <constraint firstItem="kwS-JF-rTY" firstAttribute="top" secondItem="OM7-8m-t3o" secondAttribute="bottom" constant="20" id="27y-Cs-QWL"/>
                             <constraint firstItem="kwS-JF-rTY" firstAttribute="centerX" secondItem="iCX-6L-xip" secondAttribute="centerX" id="80V-sC-wp2"/>
                             <constraint firstItem="zCf-4f-TiU" firstAttribute="top" secondItem="OM7-8m-t3o" secondAttribute="bottom" constant="80" id="EN9-BR-7ER"/>
                             <constraint firstItem="p6Z-If-SZl" firstAttribute="top" secondItem="zCf-4f-TiU" secondAttribute="bottom" id="e1s-qC-msV"/>

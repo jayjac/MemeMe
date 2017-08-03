@@ -31,7 +31,8 @@ class MemesCollectionViewController: UIViewController, UICollectionViewDataSourc
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.setCollectionViewLayout(collectionView.collectionViewLayout, animated: true)
+        collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.collectionViewLayout.finalizeCollectionViewUpdates()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
