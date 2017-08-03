@@ -42,9 +42,9 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemesTableViewCell
         let index = indexPath.row
-        let meme = MemeManager.memesArray[index]
+        let meme = MemeManager.memesDataSourceArray[index]
         cell.topTextLabel.text = meme.topText + " " + meme.bottomText
-        cell.pictureImageView.image = UIImage(contentsOfFile: meme.originalImageUrl.path)
+        cell.pictureImageView.image = UIImage(contentsOfFile: meme.miniImageUrl.path)
         cell.activityTypeLabel.text = ""
         if let activityType = meme.activityType {
             let date = meme.date
@@ -76,7 +76,7 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MemeManager.memesArray.count
+        return MemeManager.memesDataSourceArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -97,7 +97,7 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
         guard let indexPath = selectedIndexPath else { return }
         if segue.identifier == editMemeSegueIdentifier {
             let memeEditor = segue.destination as! MemeEditorViewController
-            let dataSource = MemeManager.memesArray[indexPath.row]
+            let dataSource = MemeManager.memesDataSourceArray[indexPath.row]
             memeEditor.setMeme(from: dataSource)
         }
     }

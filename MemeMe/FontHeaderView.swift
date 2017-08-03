@@ -18,7 +18,7 @@ class FontHeaderView: UITableViewHeaderFooterView {
         label.textColor = UIColor.white
         label.layer.cornerRadius = 10.5
         label.layer.masksToBounds = true
-        label.backgroundColor =  UIColor.blue
+        label.backgroundColor =  UIColor(red: 240.0/255.0, green: 146.0/255.0, blue: 55.0/255.0, alpha: 1.0)
     }
     
 

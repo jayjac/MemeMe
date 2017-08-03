@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+// This struct is only used for saving the meme on disk after it has been shared
 struct Meme {
     let topText: String
     let bottomText: String

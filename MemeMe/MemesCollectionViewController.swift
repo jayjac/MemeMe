@@ -24,9 +24,6 @@ class MemesCollectionViewController: UIViewController, UICollectionViewDataSourc
     }
     
 
-    
-
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.reloadData()
@@ -41,23 +38,23 @@ class MemesCollectionViewController: UIViewController, UICollectionViewDataSourc
         guard let indexPath = selectedIndexPath else { return }
         if segue.identifier == editMemeSegueIdentifier {
             let memeEditor = segue.destination as! MemeEditorViewController
-            let dataSource = MemeManager.memesArray[indexPath.row]
+            let dataSource = MemeManager.memesDataSourceArray[indexPath.row]
             memeEditor.setMeme(from: dataSource)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MemeManager.memesArray.count
+        return MemeManager.memesDataSourceArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! MemesCollectionViewCell
-        if MemeManager.memesArray.count > 0 {
+        if MemeManager.memesDataSourceArray.count > 0 {
             let index = indexPath.row
-            let meme = MemeManager.memesArray[index]
+            let meme = MemeManager.memesDataSourceArray[index]
             cell.topTextLabel.text = meme.topText
             cell.bottomTextLabel.text = meme.bottomText
-            cell.pictureImageView.image = UIImage(contentsOfFile: meme.originalImageUrl.path)
+            cell.pictureImageView.image = UIImage(contentsOfFile: meme.miniImageUrl.path)
         }
         return cell
     }

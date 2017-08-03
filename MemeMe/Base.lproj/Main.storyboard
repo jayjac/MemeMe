@@ -53,6 +53,7 @@
                                     </barButtonItem>
                                     <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="ZN1-Ke-tii"/>
                                 </items>
+                                <color key="tintColor" red="0.94117647058823528" green="0.5725490196078431" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1su-AO-hWF" userLabel="Container view">
                                 <rect key="frame" x="0.0" y="64" width="375" height="510"/>
@@ -61,17 +62,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="WJU-yV-4bd" userLabel="Top Text">
-                                        <rect key="frame" x="16" y="27" width="343" height="50"/>
+                                        <rect key="frame" x="16" y="27" width="343" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="xqZ-ok-GM6"/>
+                                            <constraint firstAttribute="height" constant="60" id="xqZ-ok-GM6"/>
                                         </constraints>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="qVi-gr-IlC" userLabel="Bottom Text">
-                                        <rect key="frame" x="16" y="435" width="343" height="50"/>
+                                        <rect key="frame" x="16" y="425" width="343" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="7T1-Cp-n5A"/>
+                                            <constraint firstAttribute="height" constant="60" id="7T1-Cp-n5A"/>
                                         </constraints>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -80,25 +81,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to choose an image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA4-su-oOw">
-                                                <rect key="frame" x="65.5" y="201.5" width="244" height="27.5"/>
+                                                <rect key="frame" x="65.5" y="241.5" width="244" height="27.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <color key="textColor" red="0.22326640784740448" green="0.46965065598487854" blue="0.93338990211486816" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" red="0.94058334830000001" green="0.57152521609999996" blue="0.2156203538" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one-finger-tap" translatesAutoresizingMaskIntoConstraints="NO" id="Q2e-Aw-hit">
-                                                <rect key="frame" x="127" y="253.5" width="120" height="120"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="Ikp-b6-KFc"/>
-                                                    <constraint firstAttribute="width" constant="120" id="ioG-pk-bjD"/>
-                                                </constraints>
-                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="GA4-su-oOw" firstAttribute="centerX" secondItem="tVx-I0-g3K" secondAttribute="centerX" id="XCB-76-vBg"/>
-                                            <constraint firstItem="Q2e-Aw-hit" firstAttribute="top" secondItem="GA4-su-oOw" secondAttribute="bottom" constant="24.5" id="m9A-0j-h7V"/>
-                                            <constraint firstItem="Q2e-Aw-hit" firstAttribute="centerX" secondItem="tVx-I0-g3K" secondAttribute="centerX" id="nFx-2Q-eyh"/>
-                                            <constraint firstItem="GA4-su-oOw" firstAttribute="centerY" secondItem="tVx-I0-g3K" secondAttribute="centerY" constant="-40" id="qVf-l4-raB"/>
+                                            <constraint firstItem="GA4-su-oOw" firstAttribute="centerY" secondItem="tVx-I0-g3K" secondAttribute="centerY" id="qVf-l4-raB"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -134,6 +126,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YYM-tN-Zlx">
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="rYh-nB-cir">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelButtonWasTapped:" destination="BYZ-38-t0r" id="T2W-zd-xrF"/>
                             </connections>
@@ -244,13 +237,18 @@
             </objects>
             <point key="canvasLocation" x="2735.1999999999998" y="465.51724137931041"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main View Controller-->
         <scene sceneID="7CE-dp-ShG">
             <objects>
-                <navigationController id="xn7-Tj-08o" sceneMemberID="viewController">
+                <navigationController id="xn7-Tj-08o" customClass="MainViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qeK-F1-KD9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.94058334830000001" green="0.57152521609999996" blue="0.2156203538" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="0rZ-lT-bKT" kind="relationship" relationship="rootViewController" id="gwJ-HM-CAZ"/>
@@ -264,9 +262,10 @@
         <scene sceneID="Ks0-se-27C">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" title="Sent Memes" id="0rZ-lT-bKT" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="crl-T6-UcZ">
-                        <barButtonItem key="backBarButtonItem" title="Sent memes" id="4vB-v7-vPA"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="crl-T6-UcZ">
+                        <barButtonItem key="backBarButtonItem" title="Sent" id="y03-Fw-J4V"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gJ1-c0-1rW">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" id="RQ5-FL-6OJ"/>
                             </connections>
@@ -276,6 +275,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.94058334830000001" green="0.57152521609999996" blue="0.2156203538" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="eET-hh-Po4" kind="relationship" relationship="viewControllers" id="zKC-cS-Xwx"/>
@@ -422,10 +422,9 @@
     <resources>
         <image name="collection" width="30" height="30"/>
         <image name="font-icon-9" width="30" height="30"/>
-        <image name="one-finger-tap" width="64" height="64"/>
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t41-ER-4OX"/>
+        <segue reference="RQ5-FL-6OJ"/>
     </inferredMetricsTieBreakers>
 </document>
